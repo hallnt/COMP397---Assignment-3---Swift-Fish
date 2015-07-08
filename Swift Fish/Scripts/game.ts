@@ -3,6 +3,11 @@
 /// <reference path="typings/tweenjs/tweenjs.d.ts" />
 /// <reference path="typings/soundjs/soundjs.d.ts" />
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
+
+/// <reference path="objects/water.ts" />
+/// <reference path="objects/fish.ts" />
+/// <reference path="objects/food.ts" />
+/// <reference path="objects/monster.ts" />
  
 // GAME FRAMEWORK VARIABLES
 var canvas = document.getElementById("canvas");
@@ -11,11 +16,17 @@ var stats: Stats;
 
 var assets: createjs.LoadQueue;
 var manifest = [
+    { id: "water", src: "assets/images/water.jpg" },
     { id: "fish", src: "assets/images/fish.png" },
+    { id: "food", src: "assets/images/Seaweed.png" },
+    { id: "monster", src: "assets/images/fire_monster.png" }
 ];
 
 // GAME VARIABLES
-
+var water: objects.Water;
+var fish: objects.Fish;
+var food: objects.Food;
+var monsters: objects.Monster[] = [];
 
 // PRELOADER FUNCTION
 function preload() {
@@ -57,6 +68,14 @@ function setupStats() {
 function gameLoop() {
     stats.begin(); // Begin measuring
 
+    water.update();
+    fish.update();
+    food.update();
+    
+    for (var monster = 0; monster < 3; monster++) {
+        monsters[monster].update();
+    }
+
     stage.update();
 
     stats.end(); // end measuring
@@ -65,4 +84,22 @@ function gameLoop() {
 // OUR MAIN GAME FUNCTION
 function main() {
 
+    // add water object to the stage
+    water = new objects.Water(assets.getResult("water"));
+    stage.addChild(water);
+
+    // add food object to the stage
+    food = new objects.Food(assets.getResult("food"));
+    stage.addChild(food);
+
+    // add fish object to the stage
+    fish = new objects.Fish(assets.getResult("fish"));
+    stage.addChild(fish);
+
+    // add monster object to the stage
+    for (var monster = 0; monster < 3; monster++) {
+        monsters[monster] = new objects.Monster(assets.getResult("monster"));
+        stage.addChild(monsters[monster]);
+    }
+    
 }
