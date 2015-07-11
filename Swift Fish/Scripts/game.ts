@@ -82,8 +82,8 @@ function setupStats() {
 
     // align bottom-right
     stats.domElement.style.position = 'absolute';
-    stats.domElement.style.left = '650px';
-    stats.domElement.style.top = '30px';
+    stats.domElement.style.left = '1000px';
+    stats.domElement.style.top = '50px';
 
     document.body.appendChild(stats.domElement);
 }
@@ -98,11 +98,11 @@ function gameLoop() {
     
     for (var monster = 0; monster < 3; monster++) {
         monsters[monster].update();
-        collision.check(monsters[monster]);
+        collision.check(monsters[monster]); // check if collision occurs between the fish and monster
     }
-    collision.check(food);
+    collision.check(food);  // check if collision occurs between the fish and food
 
-    scoreboard.update();
+    scoreboard.update();    // update score and lives
 
     stage.update();
 

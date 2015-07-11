@@ -15,30 +15,43 @@
     <link href="css/main.css" rel="stylesheet" />
 </head>
 <body onload="preload();">
-    <!-- GAME CONTAINER -->
-    <canvas id="canvas" width="640" height="480"></canvas>
+    <div id="header">
+        <h1>
+            <b>Swift Fish!</b>
+            <img src="assets/images/logo2.png" /> 
+        </h1>              
+    </div>
 
-    <!-- JAVASCRIPT SECTION -->
-    <script src="Scripts/lib/Stats.js"></script>
-    <script src="Scripts/lib/easeljs-0.8.0.min.js"></script>
-    <script src="Scripts/lib/tweenjs-0.6.0.min.js"></script>
-    <script src="Scripts/lib/soundjs-0.6.0.min.js"></script>
-    <script src="Scripts/lib/preloadjs-0.6.0.min.js"></script>
+    <div id="wrapper">
+        <!-- GAME CONTAINER -->
+        <canvas id="canvas" width="640" height="480"></canvas>
 
-    <!-- GAME OBJECTS -->
-    <script src="Scripts/utility/utility.js"></script>
+        <!-- JAVASCRIPT SECTION -->
+        <script src="Scripts/lib/Stats.js"></script>
+        <script src="Scripts/lib/easeljs-0.8.0.min.js"></script>
+        <script src="Scripts/lib/tweenjs-0.6.0.min.js"></script>
+        <script src="Scripts/lib/soundjs-0.6.0.min.js"></script>
+        <script src="Scripts/lib/preloadjs-0.6.0.min.js"></script>
 
-    <script src="Scripts/objects/gameobject.js"></script>
-    <script src="Scripts/objects/water.js"></script>
-    <script src="Scripts/objects/fish.js"></script>
-    <script src="Scripts/objects/food.js"></script>
-    <script src="Scripts/objects/monster.js"></script>
+        <!-- GAME OBJECTS -->
+        <script src="Scripts/utility/utility.js"></script>
 
-    <script src="Scripts/objects/scoreboard.js"></script>
+        <script src="Scripts/objects/gameobject.js"></script>
+        <script src="Scripts/objects/water.js"></script>
+        <script src="Scripts/objects/fish.js"></script>
+        <script src="Scripts/objects/food.js"></script>
+        <script src="Scripts/objects/monster.js"></script>
 
-    <script src="Scripts/managers/collision.js"></script>
+        <script src="Scripts/objects/scoreboard.js"></script>
 
-    <!-- GAME SCRIPTS -->
-    <script src="Scripts/game.js"></script>
+        <script src="Scripts/managers/collision.js"></script>
+
+        <!-- GAME SCRIPTS -->
+        <script src="Scripts/game.js"></script>
+    </div>
+
+    <div id="footer">
+        <b>Copyright &copy; TNH Web Solutions</b>
+    </div>
 </body>
 </html>

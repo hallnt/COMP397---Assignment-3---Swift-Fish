@@ -14,8 +14,8 @@ var objects;
             // PUBLIC PROPERTIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             this.score = 0;
             this.lives = 5;
-            this.livesLabel = new createjs.Text("Lives:", "40px Consolas", "#FFFF00");
-            this.scoreLabel = new createjs.Text("Score:", "40px Consolas", "#FFFF00");
+            this.livesLabel = new createjs.Text("Lives:", "35px Consolas", "#00FF21");
+            this.scoreLabel = new createjs.Text("Score:", "35px Consolas", "#00FF21");
             this.scoreLabel.x = 350; // position of score label on the screen
             stage.addChild(this.livesLabel); // add lives label to the stage
             stage.addChild(this.scoreLabel); // add score label to the sctage
