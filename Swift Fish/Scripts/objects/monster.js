@@ -2,9 +2,9 @@
 // Author: Teleisha Hall
 // ID: 300820822 
 // Last Modified By: Teleisha Hall 
-// Date Last Modified - July 8, 2015
+// Date Last Modified - July 10, 2015
 // Program Description: A 2D side scrolling arcade web game using the Createjs framework 
-// Version 2.0 
+// Version 3.0 
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -19,10 +19,8 @@ var objects;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         function Monster(imageString) {
             _super.call(this, imageString);
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
+            this.name = "monster";
+            this.sound = "blast";
             this.reset();
         }
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -44,7 +42,7 @@ var objects;
             this.checkBounds();
         };
         return Monster;
-    })(createjs.Bitmap);
+    })(objects.GameObject);
     objects.Monster = Monster;
 })(objects || (objects = {}));
 //# sourceMappingURL=monster.js.map

@@ -59,6 +59,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\audio\bite.wav" />
+    <Content Include="assets\audio\blast.wav" />
+    <Content Include="assets\audio\fish splash.wav" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -86,9 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\game.ts" />
+    <TypeScriptCompile Include="Scripts\managers\collision.ts" />
     <TypeScriptCompile Include="Scripts\objects\fish.ts" />
     <TypeScriptCompile Include="Scripts\objects\food.ts" />
+    <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />
     <TypeScriptCompile Include="Scripts\objects\monster.ts" />
+    <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\objects\water.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\easeljs\easeljs.d.ts" />
@@ -96,10 +102,9 @@
     <TypeScriptCompile Include="Scripts\typings\soundjs\soundjs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\stats\stats.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\tweenjs\tweenjs.d.ts" />
+    <TypeScriptCompile Include="Scripts\utility\utility.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="assets\audio\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

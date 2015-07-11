@@ -2,9 +2,9 @@
 // Author: Teleisha Hall
 // ID: 300820822 
 // Last Modified By: Teleisha Hall 
-// Date Last Modified - July 8, 2015
+// Date Last Modified - July 10, 2015
 // Program Description: A 2D side scrolling arcade web game using the Createjs framework 
-// Version 2.0 
+// Version 3.0 
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -19,11 +19,9 @@ var objects;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         function Food(imageString) {
             _super.call(this, imageString);
+            this.name = "food";
+            this.sound = "bite";
             this.dx = 5;
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
             this.reset();
         }
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -42,7 +40,7 @@ var objects;
             this.checkBounds();
         };
         return Food;
-    })(createjs.Bitmap);
+    })(objects.GameObject);
     objects.Food = Food;
 })(objects || (objects = {}));
 //# sourceMappingURL=food.js.map

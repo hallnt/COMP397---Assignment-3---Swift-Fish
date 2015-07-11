@@ -1,13 +1,29 @@
-﻿/// <reference path="typings/stats/stats.d.ts" />
+﻿// Source File: COMP397 Assignment 3 - 2D Side Scrolling Web Game
+// Author: Teleisha Hall
+// ID: 300820822 
+// Last Modified By: Teleisha Hall 
+// Date Last Modified - July 10, 2015
+// Program Description: A 2D side scrolling arcade web game using the Createjs framework 
+// Version 3.0 
+
+
+/// <reference path="typings/stats/stats.d.ts" />
 /// <reference path="typings/easeljs/easeljs.d.ts" />
 /// <reference path="typings/tweenjs/tweenjs.d.ts" />
 /// <reference path="typings/soundjs/soundjs.d.ts" />
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
 
+/// <reference path="utility/utility.ts" />
+
+/// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/water.ts" />
 /// <reference path="objects/fish.ts" />
 /// <reference path="objects/food.ts" />
 /// <reference path="objects/monster.ts" />
+
+/// <reference path="objects/scoreboard.ts" />
+
+/// <reference path="managers/collision.ts" />
  
 // GAME FRAMEWORK VARIABLES
 var canvas = document.getElementById("canvas");
@@ -19,7 +35,10 @@ var manifest = [
     { id: "water", src: "assets/images/water.jpg" },
     { id: "fish", src: "assets/images/fish.png" },
     { id: "food", src: "assets/images/Seaweed.png" },
-    { id: "monster", src: "assets/images/fire_monster.png" }
+    { id: "monster", src: "assets/images/fire_monster.png" },
+    { id: "bite", src: "assets/audio/bite.wav" },
+    { id: "blast", src: "assets/audio/blast.wav" },
+    { id: "splash", src: "assets/audio/fish splash.wav" }
 ];
 
 // GAME VARIABLES
@@ -27,6 +46,11 @@ var water: objects.Water;
 var fish: objects.Fish;
 var food: objects.Food;
 var monsters: objects.Monster[] = [];
+
+var scoreboard: objects.ScoreBoard;
+
+// GAME MANAGERS
+var collision: managers.Collision;
 
 // PRELOADER FUNCTION
 function preload() {
@@ -74,7 +98,11 @@ function gameLoop() {
     
     for (var monster = 0; monster < 3; monster++) {
         monsters[monster].update();
+        collision.check(monsters[monster]);
     }
+    collision.check(food);
+
+    scoreboard.update();
 
     stage.update();
 
@@ -101,5 +129,11 @@ function main() {
         monsters[monster] = new objects.Monster(assets.getResult("monster"));
         stage.addChild(monsters[monster]);
     }
+
+    // add scvoreboard
+    scoreboard = new objects.ScoreBoard();
+
+    // add collision manager
+    collision = new managers.Collision;
     
 }

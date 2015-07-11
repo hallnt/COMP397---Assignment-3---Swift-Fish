@@ -2,7 +2,7 @@
 // Author: Teleisha Hall
 // ID: 300820822 
 // Last Modified By: Teleisha Hall 
-// Date Last Modified - July 10, 2015
+// Date Last Modified - July 8, 2015
 // Program Description: A 2D side scrolling arcade web game using the Createjs framework 
 // Version 3.0 
 var __extends = this.__extends || function (d, b) {
@@ -13,22 +13,22 @@ var __extends = this.__extends || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // Fish Class +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    var Fish = (function (_super) {
-        __extends(Fish, _super);
+    // Game Object Class +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    var GameObject = (function (_super) {
+        __extends(GameObject, _super);
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        function Fish(imageString) {
+        function GameObject(imageString) {
             _super.call(this, imageString);
-            this.sound = "splash";
-            this.x = 70;
-            createjs.Sound.play(this.sound, { "loop": -1 });
+            this.isColliding = false;
+            this.sound = "";
+            this.name = "";
+            this.width = this.getBounds().width;
+            this.height = this.getBounds().height;
+            this.regX = this.width * 0.5;
+            this.regY = this.height * 0.5;
         }
-        // PUBLIC METHOD ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        Fish.prototype.update = function () {
-            this.y = stage.mouseY; // position fish under mouse
-        };
-        return Fish;
-    })(objects.GameObject);
-    objects.Fish = Fish;
+        return GameObject;
+    })(createjs.Bitmap);
+    objects.GameObject = GameObject;
 })(objects || (objects = {}));
-//# sourceMappingURL=fish.js.map
+//# sourceMappingURL=gameobject.js.map
