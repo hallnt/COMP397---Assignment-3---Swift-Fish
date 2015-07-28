@@ -6,9 +6,9 @@
 // Program Description: A 2D side scrolling arcade web game using the Createjs framework 
 // Revision History: v4 - https://github.com/hallnt/COMP397---Assignment-3---Swift-Fish/commits/master
 
-module utility {
-    // DISTANCE UTILITY FUNCTION ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    export function distance(p1: createjs.Point, p2: createjs.Point): number {
-        return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
-    }
-}
+module state_constants {
+    // STATE CONSTANTS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    export var START_STATE: number = 0;
+    export var GAME_STATE: number = 1;
+    export var GAMEOVER_STATE: number = 2;
+} 

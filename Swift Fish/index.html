@@ -4,9 +4,9 @@
 <!-- Author: Teleisha Hall-->
 <!-- ID: 300820822 -->
 <!-- Last Modified By: Teleisha Hall -->
-<!-- Date Last Modified - July 10, 2015 -->
+<!-- Date Last Modified - July 28, 2015 -->
 <!-- Program Description: A 2D side scrolling arcade web game using the Createjs framework -->
-<!-- Version 3.0 -->
+<!-- Revision History: v4 - https://github.com/hallnt/COMP397---Assignment-3---Swift-Fish/commits/master -->
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,9 +17,9 @@
 <body onload="preload();">
     <div id="header">
         <h1>
+            <img src="assets/images/logo.png" /> <br />
             <b>Swift Fish!</b>
-            <img src="assets/images/logo2.png" /> 
-        </h1>              
+        </h1>
     </div>
 
     <div id="wrapper">
@@ -35,16 +35,21 @@
 
         <!-- GAME OBJECTS -->
         <script src="Scripts/utility/utility.js"></script>
+        <script src="Scripts/utility/state_constants.js"></script>
 
+        <script src="Scripts/objects/button.js"></script>
         <script src="Scripts/objects/gameobject.js"></script>
         <script src="Scripts/objects/water.js"></script>
         <script src="Scripts/objects/fish.js"></script>
         <script src="Scripts/objects/food.js"></script>
         <script src="Scripts/objects/monster.js"></script>
-
         <script src="Scripts/objects/scoreboard.js"></script>
 
         <script src="Scripts/managers/collision.js"></script>
+
+        <script src="Scripts/states/start.js"></script>
+        <script src="Scripts/states/game_play.js"></script>
+        <script src="Scripts/states/gameover.js"></script>
 
         <!-- GAME SCRIPTS -->
         <script src="Scripts/game.js"></script>

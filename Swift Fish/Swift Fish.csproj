@@ -61,8 +61,13 @@
   <ItemGroup>
     <Content Include="assets\audio\bite.wav" />
     <Content Include="assets\audio\blast.wav" />
-    <Content Include="assets\audio\fish splash.wav" />
-    <Content Include="assets\images\logo2.png" />
+    <Content Include="assets\audio\Game Over.mp3" />
+    <Content Include="assets\audio\game_soundtrack.mp3" />
+    <Content Include="assets\audio\splash.mp3" />
+    <Content Include="assets\images\logo.PNG" />
+    <Content Include="assets\images\playAgainButton.png" />
+    <Content Include="assets\images\quitGameButton.png" />
+    <Content Include="assets\images\start_game_button.jpg" />
     <Content Include="assets\images\underwater_background.jpg" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -79,11 +84,13 @@
     <Content Include="assets\images\water.jpg" />
     <Content Include="css\main.css" />
     <Content Include="index.html" />
+    <Content Include="Properties\logo.PNG" />
     <Content Include="Scripts\lib\easeljs-0.8.0.min.js" />
     <Content Include="Scripts\lib\preloadjs-0.6.0.min.js" />
     <Content Include="Scripts\lib\soundjs-0.6.0.min.js" />
     <Content Include="Scripts\lib\Stats.js" />
     <Content Include="Scripts\lib\tweenjs-0.6.0.min.js" />
+    <Content Include="assets\images\Instructions.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -92,18 +99,23 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\game.ts" />
     <TypeScriptCompile Include="Scripts\managers\collision.ts" />
+    <TypeScriptCompile Include="Scripts\objects\button.ts" />
     <TypeScriptCompile Include="Scripts\objects\fish.ts" />
     <TypeScriptCompile Include="Scripts\objects\food.ts" />
     <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />
     <TypeScriptCompile Include="Scripts\objects\monster.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\objects\water.ts" />
+    <TypeScriptCompile Include="Scripts\states\gameover.ts" />
+    <TypeScriptCompile Include="Scripts\states\game_play.ts" />
+    <TypeScriptCompile Include="Scripts\states\start.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\easeljs\easeljs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\preloadjs\preloadjs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\soundjs\soundjs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\stats\stats.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\tweenjs\tweenjs.d.ts" />
+    <TypeScriptCompile Include="Scripts\utility\state_constants.ts" />
     <TypeScriptCompile Include="Scripts\utility\utility.ts" />
   </ItemGroup>
   <ItemGroup />

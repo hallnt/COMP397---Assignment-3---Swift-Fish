@@ -2,9 +2,9 @@
 // Author: Teleisha Hall
 // ID: 300820822 
 // Last Modified By: Teleisha Hall 
-// Date Last Modified - July 10, 2015
+// Date Last Modified - July 28, 2015
 // Program Description: A 2D side scrolling arcade web game using the Createjs framework 
-// Version 3.0 
+// Revision History: v4 - https://github.com/hallnt/COMP397---Assignment-3---Swift-Fish/commits/master
 var managers;
 (function (managers) {
     // Collision Class ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -26,6 +26,11 @@ var managers;
                     createjs.Sound.play(gameObject.sound);
                     if (gameObject.name == "monster") {
                         scoreboard.lives--;
+                        // game over
+                        if (scoreboard.lives < 0) {
+                            // change to gameOver state
+                            changeGameState(state_constants.GAMEOVER_STATE);
+                        }
                     }
                     if (gameObject.name == "food") {
                         scoreboard.score += 100;

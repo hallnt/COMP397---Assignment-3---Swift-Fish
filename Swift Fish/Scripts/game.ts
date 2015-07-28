@@ -2,10 +2,10 @@
 // Author: Teleisha Hall
 // ID: 300820822 
 // Last Modified By: Teleisha Hall 
-// Date Last Modified - July 10, 2015
+// Date Last Modified - July 28, 2015
 // Program Description: A 2D side scrolling arcade web game using the Createjs framework 
-// Version 3.0 
-
+// Revision History: v4 - https://github.com/hallnt/COMP397---Assignment-3---Swift-Fish/commits/master
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /// <reference path="typings/stats/stats.d.ts" />
 /// <reference path="typings/easeljs/easeljs.d.ts" />
@@ -14,7 +14,9 @@
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
 
 /// <reference path="utility/utility.ts" />
+/// <reference path="utility/state_constants.ts" />
 
+/// <reference path="objects/button.ts" />
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/water.ts" />
 /// <reference path="objects/fish.ts" />
@@ -25,21 +27,35 @@
 
 /// <reference path="managers/collision.ts" />
  
+/// <reference path="states/start.ts" />
+/// <reference path="states/game_play.ts" />
+/// <reference path="states/gameover.ts" />
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
+
 // GAME FRAMEWORK VARIABLES
 var canvas = document.getElementById("canvas");
 var stage: createjs.Stage;
 var stats: Stats;
+var game: createjs.Container;
 
+// GAME ASSETS
 var assets: createjs.LoadQueue;
 var manifest = [
+    { id: "instructions", src: "assets/images/Instructions.png" },
+    { id: "startButton", src: "assets/images/start_game_button.jpg" },
+    { id: "playAgainButton", src: "assets/images/playAgainButton.png" },
+    { id: "quitGameButton", src: "assets/images/quitGameButton.png" },
     { id: "water", src: "assets/images/water.jpg" },
     { id: "fish", src: "assets/images/fish.png" },
+    { id: "fish2", src: "assets/images/fish.png" },
     { id: "food", src: "assets/images/Seaweed.png" },
     { id: "monster", src: "assets/images/fire_monster.png" },
+    { id: "soundtrack", src: "assets/audio/game_soundtrack.mp3" },
     { id: "bite", src: "assets/audio/bite.wav" },
     { id: "blast", src: "assets/audio/blast.wav" },
-    { id: "splash", src: "assets/audio/fish splash.wav" }
-];
+    { id: "splash", src: "assets/audio/splash.mp3" },
+    { id: "gameover", src: "assets/audio/Game Over.mp3" }
+]; 
 
 // GAME VARIABLES
 var water: objects.Water;
@@ -49,14 +65,31 @@ var monsters: objects.Monster[] = [];
 
 var scoreboard: objects.ScoreBoard;
 
+// GAME BUTTONS
+var startButton: objects.Button;
+var playAgainButton: objects.Button;
+var quitGameButton: objects.Button;
+
 // GAME MANAGERS
 var collision: managers.Collision;
+
+// GAME STATES
+var start: states.Start;
+var playGame: states.GamePlay;
+var gameOver: states.GameOver;
+var presentState;
+
+// START SCREEN VARIABLES
+var instructions: createjs.Bitmap;
+var fish2: createjs.Bitmap;
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
+
 
 // PRELOADER FUNCTION
 function preload() {
     assets = new createjs.LoadQueue();
     assets.installPlugin(createjs.Sound);
-    // event listener triggers when assets are completely loaded
+    //event listener triggers when assets are completely loaded
     assets.on("complete", init, this);
     assets.loadManifest(manifest);
     //Setup statistics object
@@ -82,8 +115,8 @@ function setupStats() {
 
     // align bottom-right
     stats.domElement.style.position = 'absolute';
-    stats.domElement.style.left = '1000px';
-    stats.domElement.style.top = '50px';
+    stats.domElement.style.left = '1006px';
+    stats.domElement.style.top = '150px';
 
     document.body.appendChild(stats.domElement);
 }
@@ -92,48 +125,33 @@ function setupStats() {
 function gameLoop() {
     stats.begin(); // Begin measuring
 
-    water.update();
-    fish.update();
-    food.update();
-    
-    for (var monster = 0; monster < 3; monster++) {
-        monsters[monster].update();
-        collision.check(monsters[monster]); // check if collision occurs between the fish and monster
-    }
-    collision.check(food);  // check if collision occurs between the fish and food
-
-    scoreboard.update();    // update score and lives
-
-    stage.update();
+    presentState.update(); //update present game state
 
     stats.end(); // end measuring
 }
 
 // OUR MAIN GAME FUNCTION
-function main() {
+function main() {    
+    start = new states.Start(); // instantiate the start state
+    presentState = start;   // make present state the start state
+}
 
-    // add water object to the stage
-    water = new objects.Water(assets.getResult("water"));
-    stage.addChild(water);
+// FUNCTION TO CHANGE GAME STATE
+function changeGameState(state: number): void {
+    // switch between game states
+    switch (state) {
+        case state_constants.START_STATE:
+            presentState = start;   // make present state the start state
+            break;
 
-    // add food object to the stage
-    food = new objects.Food(assets.getResult("food"));
-    stage.addChild(food);
+        case state_constants.GAME_STATE:
+            playGame = new states.GamePlay();   // instantiate gamePlay state            
+            presentState = playGame;        // make present state the game play state
+            break;
 
-    // add fish object to the stage
-    fish = new objects.Fish(assets.getResult("fish"));
-    stage.addChild(fish);
-
-    // add monster object to the stage
-    for (var monster = 0; monster < 3; monster++) {
-        monsters[monster] = new objects.Monster(assets.getResult("monster"));
-        stage.addChild(monsters[monster]);
+        case state_constants.GAMEOVER_STATE:
+            gameOver = new states.GameOver();   // instantiate the gameOver state            
+            presentState = gameOver;        // make present state the gameOver state
+            break;
     }
-
-    // add scvoreboard
-    scoreboard = new objects.ScoreBoard();
-
-    // add collision manager
-    collision = new managers.Collision;
-    
 }

@@ -2,9 +2,9 @@
 // Author: Teleisha Hall
 // ID: 300820822 
 // Last Modified By: Teleisha Hall 
-// Date Last Modified - July 8, 2015
+// Date Last Modified - July 28, 2015
 // Program Description: A 2D side scrolling arcade web game using the Createjs framework 
-// Version 3.0 
+// Revision History: v4 - https://github.com/hallnt/COMP397---Assignment-3---Swift-Fish/commits/master 
 
 module objects {
     // Game Object Class +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
