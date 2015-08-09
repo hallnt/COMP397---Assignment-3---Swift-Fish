@@ -17,7 +17,7 @@ module states {
         
         // PUBLIC METHODs ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public update(): void { 
-            // update game vriables
+            // update game variables
             water.update();
             fish.update();
             food.update();

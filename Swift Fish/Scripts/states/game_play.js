@@ -15,7 +15,7 @@ var states;
         }
         // PUBLIC METHODs ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         GamePlay.prototype.update = function () {
-            // update game vriables
+            // update game variables
             water.update();
             fish.update();
             food.update();

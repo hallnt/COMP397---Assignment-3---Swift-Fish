@@ -24,7 +24,7 @@ module objects {
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private checkBounds(): void {
 
-            /// check if food has left screen
+            // check if food has left screen
             if (this.x < 0 - this.width)
                 this.reset();
         }

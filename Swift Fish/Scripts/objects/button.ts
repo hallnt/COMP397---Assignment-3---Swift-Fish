@@ -7,7 +7,7 @@
 // Revision History: v4 - https://github.com/hallnt/COMP397---Assignment-3---Swift-Fish/commits/master
 
 module objects { 
-    // Buttin Class ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // Button Class ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     export class Button extends createjs.Bitmap {
 
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

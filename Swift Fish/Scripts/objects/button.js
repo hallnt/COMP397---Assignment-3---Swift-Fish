@@ -13,7 +13,7 @@ var __extends = this.__extends || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // Buttin Class ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // Button Class ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     var Button = (function (_super) {
         __extends(Button, _super);
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
